@@ -1,0 +1,14 @@
+# Python
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.egg-info/
+server/venv/
+
+# Docker
+*.log
+
+# Node (if you have a frontend with Node.js)
+client/node_modules/
+client/.next/
+client/.env.local
