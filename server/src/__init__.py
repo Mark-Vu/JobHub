@@ -4,10 +4,12 @@ from src.config import Config
 
 
 # Initialize database
-# db = SQLAlchemy()
+db = SQLAlchemy()
 
 def create_app(config_class=Config):
     app = Flask(__name__)
+    
+    # Call all configurations from config.py
     app.config.from_object(config_class)
 
     # Register a Blueprint in flask, blueprint is basically a way to split up api to different folders

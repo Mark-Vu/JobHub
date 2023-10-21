@@ -8,9 +8,9 @@ load_dotenv()
 user = os.environ.get('DB_USER')
 db_name = os.environ.get("DB_NAME")
 password = os.environ.get('DB_PWD')
-DB_URI = f'postgresql://{user}:{password}@localhost/{db_name}'
-
+db_id = os.environ.get('DB_ID')
+DB_URI = f'postgresql://{user}:{password}@{db_id}/{db_name}'
 
 class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    # SQLALCHEMY_DATABASE_URI= DB_URI
+    SQLALCHEMY_DATABASE_URI= DB_URI
