@@ -12,3 +12,4 @@ server/venv/
 client/node_modules/
 client/.next/
 client/.env.local
+server/src/.env
