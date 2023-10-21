@@ -2,7 +2,7 @@
 FROM python:3.11-slim
 
 # Set the working directory in the container
-WORKDIR /code
+WORKDIR /server
 
 # Copy the dependencies file to the container
 COPY ./requirements.txt ./
@@ -18,3 +18,4 @@ ENV FLASK_APP=src/main.py
 
 # Specify the command to run on container start
 CMD ["flask", "run", "--host=0.0.0.0", "--port=80", "--reload"]
+# flask run --host=0.0.0.0 --port=80 --reload

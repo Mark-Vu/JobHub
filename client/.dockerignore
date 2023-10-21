@@ -1,0 +1,19 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Development
+*.log
+*.swp
+*.swo
+*.vscode/
+.vscode/
+.DS_Store
+
+# Build and Dependency Directories
+out/
+.next/
+node_modules/
+npm-debug.log
+yarn-error.log
