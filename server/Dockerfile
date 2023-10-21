@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY ./src ./src
 
 # Set the FLASK_APP environment variable
-ENV FLASK_APP=src/main.py
+ENV FLASK_APP=main.py
 
 # Specify the command to run on container start
 CMD ["flask", "run", "--host=0.0.0.0", "--port=80", "--reload"]
