@@ -17,7 +17,3 @@ RUN yarn build
 
 # Expose the app on port 3000
 EXPOSE 3000
-
-# Specify the command to run on container start
-CMD ["yarn", "dev"]
-# yarn dev
