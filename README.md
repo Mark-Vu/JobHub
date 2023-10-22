@@ -4,6 +4,7 @@ Star this repo if you are interested, we might reach out for help in this projec
 ## We will get you all the jobs you ever wanted to find~ 
 
 ### Inspiration
+The co-op job search can be daunting. Think about how often you input keywords like:
 When you are in the co-op job search process. You'll search for 
 - Software Engineer Intern 
 - Software Engineer Co-op 
@@ -12,37 +13,36 @@ When you are in the co-op job search process. You'll search for
 - Data Engineer Intern 
 - Data Engineer Co-op 
 
-And MANY more ... You will put all these keywords into Indeed, LinkedIn, Glassdoor, etc... You are excited/anxious and motivated when you just started applying, but after a few days/weeks, you get no interviews and this keyword search process starts to burn you out. 
+...and so on. You diligently place these into platforms like Indeed, LinkedIn, Glassdoor, and more. Initially, enthusiasm fuels your search, but after weeks without success, it can wear you down. 
 
-Now, imagine you go to "_JobHubSFU.com_", and you see a tailored list of jobs that you can apply for, scraped from all these websites using enumerated keywords. You click on a job URL and you apply. 
+Enter "_JobHubSFU.com_", where you're greeted by a curated list of job opportunities, aggregated from various platforms based on common search terms. One-click takes you directly to the application. 
 
-We hope this can make your student-professional transition easier. We also hope we can help you turn into a chapter of your career in life. 
+Our mission is to ease your transition from student to professional and guide you into the next chapter of your career.
 
-### What's Next? 
-Since we are first time using these technologies, we didn't have enough time to complete it. We will 
-- first, discuss more possibilities and explore tool options, define scope and provide a more detailed proposal as a result 
-- then, will finalize on tech stack and architecture design 
-- discuss and break down the project into large/medium tasks 
-- break down larger tasks into individual minimal tickets that one person is able to take 
-- work as a team in the initial setup 
-- colab to build a fresh working application 
-- deploy to make it internet-facing 
-- invite other developers to contribute and make it more than a cs-job-only thing 
+### What's On The Horizon? 
+Being newcomers to these technologies, we're still in the blueprint phase. Here's a roadmap:
+1. Broaden our horizons by researching more capabilities and tools.
+2. Finalize our tech stack and architectural design.
+3. Segment the project into sizable tasks.
+4. Further dissect these tasks into actionable tickets that can be individually managed.
+5. Collaborate during the foundational setup.
+6. Build a functional, user-friendly application.
+7. Launch to the web.
+8. Open our doors to external developer contributions, expanding beyond just CS roles.
 
-We will write comprehensive documentation for everyone (0 experience required kinda doc yea) who's interested in joining the project and contributing. This will be a sick project to work on to learn all aspects of software development and popular technologies, especially Amazon Web services (AWS). 
+In-depth documentation will accompany the project, ensuring that even those with minimal experience can jump in and contribute. It's an exciting venture, especially for those keen on exploring Amazon Web Services (AWS) and the intricacies of software development.
 
-### Just some examples of how this project can be extended: 
-- Include user registration (major, experience level, etc) 
-    - There is a lot to work on for each major/experience level. 
-- Include more websites 
-    - We need customized scrapers for each website since their page structures are different. 
-- Email/Message notification 
-    - Register users to AWS SNS to give daily updates 
-- Resume review section 
-    - Post resumes and get advices/roasted
-Many more... 
+### Potential Extensions:
+- **User Profiles**: Tailored by major, experience level, and more.
+  - Custom experiences can be curated based on these details.
+- **More Platforms**: The more, the merrier.
+  - Custom scrapers will be necessary due to unique site structures.
+- **Notifications**: Email or messages via AWS SNS for daily updates.
+- **Resume Review**: Share your CV and receive constructive feedback (or a gentle roast).
 
-A potential architecture image is attached as follows: 
+... and countless other possibilities!
+
+For a sneak peek into our architectural vision, check out the preliminary diagram below.
 
 <img width="453" alt="image" src="https://github.com/Mark-Vu/JobHub/assets/99154887/2edfad7b-fe54-4ad1-bd35-48be40b64bb0">
 
