@@ -6,7 +6,7 @@ from src.models import Jobs, insert_into_jobs
 @bp.route("/")
 def index():
     data = read_from_csv()
-    insert_into_jobs(data)
+    # insert_into_jobs(data)
     # Query all jobs from the Jobs table
     jobs = Jobs.query.all()
     
