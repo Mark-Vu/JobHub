@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from src.config import Config
-
+from flask_cors import CORS
 
 # Initialize database
 db = SQLAlchemy()
@@ -11,6 +11,7 @@ def create_app(config_class=Config):
     
     # Call all configurations from config.py
     app.config.from_object(config_class)
+    CORS(app, supports_credentials=True)
 
     # Register a Blueprint in flask, blueprint is basically a way to split up api to different folders
     # docs: https://flask.palletsprojects.com/en/3.0.x/blueprints/
