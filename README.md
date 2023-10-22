@@ -9,6 +9,8 @@ The transition from academic studies to professional internships is a significan
 
 1. Open a terminal and navigate to the server directory:
    ```bash
+   cd server
+   pip install -r requirements.txt
    cd server/src
    export FLASK_APP=main.py
     flask run --host=0.0.0.0 --port=5173
