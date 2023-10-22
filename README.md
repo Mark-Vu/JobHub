@@ -13,10 +13,13 @@ The transition from academic studies to professional internships is a significan
    pip install -r requirements.txt
    cd server/src
    export FLASK_APP=main.py
-    flask run --host=0.0.0.0 --port=5173
+   flask run --host=0.0.0.0 --port=5173
   
 2. Open another terminal:
+  
   ```bash
-  cd vite-project
+  cd client
   npm install
   npm run dev
+  ```
+Make sure it is running on port 5173 (same port as flask server)
