@@ -9,7 +9,7 @@ user = os.environ.get('DB_USER')
 db_name = os.environ.get("DB_NAME")
 password = os.environ.get('DB_PWD')
 db_id = os.environ.get('DB_ID')
-DB_URI = f'postgresql://{user}:{password}@{db_id}/{db_name}'
+DB_URI = f'postgresql://jobhub_jlcj_user:WWvWHBKyiqRlgMvpCodBaXqHiEiyFD7d@dpg-ckq54jhrfc9c73evaq7g-a.oregon-postgres.render.com/jobhub_jlcj'
 
 class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY')
