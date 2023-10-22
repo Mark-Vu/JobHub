@@ -42,7 +42,9 @@ We will write comprehensive documentation for everyone (0 experience required ki
     - Post resumes and get advices/roasted
 Many more... 
 
-A potential architecture image is attached. 
+A potential architecture image is attached as follows: 
+
+<img width="453" alt="image" src="https://github.com/Mark-Vu/JobHub/assets/99154887/2edfad7b-fe54-4ad1-bd35-48be40b64bb0">
 
 --------------------------------------------------------------------------------------------------
 # JobHub
