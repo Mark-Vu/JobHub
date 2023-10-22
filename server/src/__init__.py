@@ -17,11 +17,10 @@ def create_app(config_class=Config):
     from src.job_board import bp as job_board_blueprint
     app.register_blueprint(job_board_blueprint)
 
-    # db.init_app(app)
+    db.init_app(app)
 
     with app.app_context():
-        pass
         # This will create the database cols when we initialize the app, add db later
-        # db.create_all()
+        db.create_all()
         
     return app
