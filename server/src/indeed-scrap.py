@@ -1,79 +1,72 @@
-import requests # http requests
-from bs4 import BeautifulSoup # Webscrape
-from collections import defaultdict # Default dictionary: store a list with each key
-import pandas as pd     # DF
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+import time
+import sys
+import random
 
-# this was used for the person contacting me who had these details for their system
-headers = {
-    "User-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
-}
 
-# Skills & Place of Work
-skill = input('Enter your Skill: ').strip()
-place = input('Enter the location: ').strip()
-no_of_pages = int(input('Enter the # of pages to scrape: '))
 
-indeed_posts=[]
+def get_url(position, location):
 
-for page in range(no_of_pages):
-    # Connecting to India Indeed
-        url = 'https://ca.indeed.com/jobs?q=' + skill + \
-            '&l=' + place + '&sort=date' +'&start='+ str(page * 10)
-        
-        # Get request to indeed with headers above (you don't need headers!)
-        response = requests.get(url, headers=headers)
-        html = response.text
+    template = "https://www.indeed.ca/jobs?q={}&l={}&sort=date"
+    url = template.format(position.replace(' ', '+'),
+                          location.replace(' ', '+'))
+    print(url)
+    return url
 
-        # Scrapping the Web (you can use 'html' or 'lxml')
-        soup = BeautifulSoup(html, 'lxml')
+def get_job_data(driver, target_url):
+    driver.get(target_url)
+    time.sleep(random.uniform(9, 10.9))
+    try:
+        close = driver.find_element('xpath', '//*[@id="mosaic-desktopserpjapopup"]/div[1]/button')
+        close.click()
+    except:
+        pass
 
-        # Outer Most Entry Point of HTML:
-        outer_most_point = soup.find('div', attrs={'id': 'mosaic-provider-jobcards'})
 
-        # Check if outer_most_point is not None
-        if outer_most_point:
-            # Find all <ul> elements within outer_most_point
-            ul_elements = outer_most_point.find_all('ul')
-            
-            for i in ul_elements:
-                # rest of the code
-            # Job Title:
-                job_title=i.find('h2',{'class':'jobTitle jobTitle-color-purple jobTitle-newJob'})
-    #             print(job_title)
-                if job_title != None:
-                    jobs=job_title.find('a').text
+    all_data = []
 
-                # Company Name:
-                if i.find('span', {'class': 'companyName'}) != None:
-                    company = i.find('span', {'class': 'companyName'}).text
+    job_cards = driver.find_elements('xpath', '//div[@class = "css-1m4cuuf e37uo190"]' )
 
-                        
-                # Links: these Href links will take us to full job description
-                if i.find('a') != None:
-                        links=i.find('a',{'class':'jcs-JobTitle'})['href']
-                        
-                # Salary if available:
-                if i.find('div',{'class':'attribute_snippet'}) != None:
-                        salary=i.find('div',{'class':'attribute_snippet'}).text
+    for card in job_cards:
+        card.location_once_scrolled_into_view
+        card.click()
+        # Wait up to 10 seconds for an element to be present on the DOM of a page and visible.
+        wait = WebDriverWait(driver, 4.9)
+        try:
+            element = wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/main/div/div[1]/div/div[5]/div[2]/div/div/div/div/div[1]/div/div[1]/div[1]/h2")))
+            # You can now interact with the element since it's visible
+            job_title = element.text.strip()
+            title = job_title.split('\n')
+            data = {'Job Title': title}
+            print(data)
+            all_data.append(data)
+        except:
+            # This block will be executed if the element is not visible within 10 seconds
+            print("Timed out waiting for the element to become visible.")
 
-                else:
-                        salary='No Salary'
 
-                # Job Post Date:
-                if i.find('span', attrs={'class': 'date'}) != None:
-                        post_date = i.find('span', attrs={'class': 'date'}).text
 
-                # Put everything together in a list of lists for the default dictionary
-                indeed_posts.append([company,jobs,links,salary, post_date])
-            
-            
-# put together in list
+def main():
+    # PROXY = ""
+    # chrom_options = webdriver.ChromeOptions()
+    # chrom_options.add_argument(f'--proxy-server={PROXY}')
+    position = 'Software Engineer Intern'
+    location = 'Vancouver, BC'
+    jobs = []
+    url =get_url(position, location)
+    browser = webdriver.Chrome()
+    for page in range(0, 50, 10):
+        order_page = (url + '&start=' +str(page))
+        browser.get(order_page)
+        time.sleep(random.uniform(9, 10.5))
+        # We need to add close modal button just in case if theres notifications popped out
+        get_job_data(browser, order_page)
+    browser.close()
 
-# (create a dictionary with keys and a list of values from above "indeed_posts")
-indeed_dict_list=defaultdict(list)
 
-# Fields for our DF 
-indeed_spec=['Company','job','link','Salary','Job_Posted_Date']
-# list of lists containing jobs with (company,job_title, href_link,salary,when job posted)
-indeed_posts[0:2]
-print(indeed_posts)
+main()
