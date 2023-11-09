@@ -3,7 +3,7 @@ import csv
 from src.models import Jobs, insert_into_jobs
 
 
-@bp.route("/")
+@bp.route("/jobs")
 def index():
     data = read_from_csv()
     insert_into_jobs(data)
